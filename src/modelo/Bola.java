@@ -151,7 +151,6 @@ public class Bola {
 	}
 
 	public void pararBolita(Double x, Double y) {
-
 		if (distanciaBolita(x, y) <= radio) {
 			parada = true;
 		}

@@ -19,6 +19,7 @@ public class Juego {
 	private ArrayList<Puntaje> puntajes;
 
 	public Juego() {
+		deserializacion();
 		bolas = new ArrayList<Bola>();
 		puntajes = new ArrayList<Puntaje>();
 	}
@@ -110,7 +111,7 @@ public class Juego {
 
 	}
 
-	public void deserializableGame() {
+	public void deserializacion() {
 		File fl = new File(".\\data\\MejoresPuntajes.data");
 		ArrayList<Puntaje> puntajess;
 		try {
