@@ -1,0 +1,4 @@
+#nivel
+0
+#radio posX posY espera direccion rebotes
+50 70 90 10 Izquierda 0 false;
