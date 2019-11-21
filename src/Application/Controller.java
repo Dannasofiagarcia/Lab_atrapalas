@@ -6,6 +6,7 @@ import java.util.Random;
 
 import Thread.HiloMovimiento;
 import Thread.HiloPintar;
+import Thread.HiloPuntajes;
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import modelo.Bola;
 import modelo.Juego;
+import modelo.Puntaje;
 
 public class Controller extends Application {
 
@@ -41,6 +43,7 @@ public class Controller extends Application {
 
 	private Button cambiarConf;
 	private TextField configuracionNueva;
+	private Label rebotes;
 
 	public Controller() {
 //		bolas = new ArrayList<Bola>();
@@ -91,7 +94,7 @@ public class Controller extends Application {
 		separador.setLayoutY(30);
 		pane.getChildren().add(separador);
 
-		Label rebotes = new Label();
+		rebotes = new Label();
 		rebotes.setText(puntaje + "");
 		rebotes.setPrefSize(41, 53);
 		rebotes.setLayoutX(14);
@@ -125,6 +128,7 @@ public class Controller extends Application {
 		asignarleColores();
 		canvas.setOnMouseClicked(e -> posicionBolita(e));
 		terminarJuego();
+		puntajes();
 		// comenzarJuego();
 		theStage.show();
 
@@ -174,6 +178,14 @@ public class Controller extends Application {
 		Color color = Color.rgb(r, g, b);
 
 		return color;
+	}
+
+	public void puntajes() {
+		ArrayList<Puntaje> puntajes = juego.getPuntajes();
+		for (int i = 0; i < puntajes.size(); i++) {
+			HiloPuntajes puntaje = new HiloPuntajes(puntajes.get(i), this);
+			puntaje.start();
+		}
 	}
 
 	public void mejoresPuntajes() {
@@ -322,6 +334,14 @@ public class Controller extends Application {
 	public double getHeight() {
 		double height = canvas.getHeight();
 		return height;
+	}
+
+	public Label getRebotes() {
+		return rebotes;
+	}
+
+	public void setRebotes(Label rebotes) {
+		this.rebotes = rebotes;
 	}
 
 //class HiloBola extends Thread {
