@@ -39,6 +39,15 @@ public class Bola {
 //				System.out.println(rebotes);
 //			}
 //			break;
+//		case Derecha:
+//			if (x + xa > maxX - radio) {
+//				direccion = Direcciones.Izquierda;
+//				xa = -1;
+//				rebotes++;
+//				System.out.println(rebotes);
+//			}
+//			break;
+
 		case Abajo:
 			if (y + ya > maximoY - radio) {
 				direccion = Direcciones.Arriba;
@@ -48,14 +57,6 @@ public class Bola {
 				y = (y + ya);
 			}
 			break;
-//		case Derecha:
-//			if (x + xa > maxX - radio) {
-//				direccion = Direcciones.Izquierda;
-//				xa = -1;
-//				rebotes++;
-//				System.out.println(rebotes);
-//			}
-//			break;
 		case Derecha:
 			if (x + xa > maximoX - radio) {
 				direccion = Direcciones.Izquierda;
@@ -63,6 +64,17 @@ public class Bola {
 				x = (maximoX - radio);
 			} else {
 				x = (x + xa);
+			}
+			break;
+
+		case Arriba:
+			if (y - ya < 0) {
+
+				direccion = Direcciones.Abajo;
+				rebotes++;
+				y = radio;
+			} else {
+				y = (y - ya);
 			}
 			break;
 //		case Arriba:
@@ -73,16 +85,6 @@ public class Bola {
 //				System.out.println(rebotes);
 //			}
 //			break;
-		case Arriba:
-			if (y - ya - radio < 0) {
-
-				direccion = Direcciones.Abajo;
-				rebotes++;
-				y = radio;
-			} else {
-				y = (y - ya);
-			}
-			break;
 
 //		case Izquierda:
 //			if (x - xa < 0) {
@@ -101,6 +103,7 @@ public class Bola {
 				x = (x - xa);
 			}
 			break;
+
 		}
 
 //		x = x + xa;
